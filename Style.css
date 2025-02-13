@@ -1,0 +1,20 @@
+h1 {
+    color: orangered;
+    background: #12ecab;
+    margin: 20px;
+    border-width: 5px;
+    border-color: rgb(18, 212, 247);
+    border-style: groove;
+    padding: 25px;
+    text-align: center;
+    /* Fuentes por default: serif, sans-serif, cursive, fantasy, monospace */
+    font-family: "Grechen Fuemen", serif;
+    font-weight: 400;
+    font-style: normal;    
+    
+}
+   
+img {
+    width: 400px;
+    border-radius: 50%;
+}      
