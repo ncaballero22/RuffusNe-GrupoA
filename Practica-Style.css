@@ -1,0 +1,137 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: palevioletred;
+    color: white;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: cyan;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(0, 255, 55);
+}
+
+tr:hover {
+    background-color: #f1c37b;
+}
+
+body {
+    margin: 20px 50px 100px 200px;
+    background: linear-gradient(90deg, #ff5900 0%, #07c3f2 100%);
+}
+
+img {
+    width: 300px;
+    padding: 20px;
+    border-radius: 50%;
+    border-style: 5px;
+    border-style: groove;
+    border-color: blueviolet;
+    background: linear-gradient(0deg, #0055d4 0%, #8c00ff 100%);
+}
+
+.Imagen-main {
+    display: flex;
+    justify-content: center;
+}
+
+#Main-tittle{
+    width: 400px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Times New Roman', Times, serif;
+    color: darkmagenta;
+    font-size: 65px;
+    text-shadow: 4px 5px 10px #000000;
+    transform: rotate(345deg);
+}
+
+.intro {
+    width: 600px;
+    background: black;
+    color: white;
+    font-size: 24px;
+    padding: 25px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav {
+    font-size: 24px;
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+.nav a {
+    color: white;
+    background-color: #13a4a4;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* lo siguiente se aplica en este especifico orden*/
+.nav a:link{
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.nav a:visited {
+    background-color: salmon;
+}
+
+.nav a:hover {
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+}
+
+.nav a:active {
+    color: red;
+}
+
+.postre-manzana {
+    border-radius: 30px;
+    margin: 10px;
+    padding: 20px;
+    background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
+    color: white;
+}
+
+.postre-chocolate {
+        border-radius: 30px;
+        margin: 10px;
+        padding: 20px;
+        background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
+        color: white;
+}
+
+.postre-fresa {
+    border-radius: 30px;
+        margin: 10px;
+        padding: 20px;
+        background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
+        color: white;
+}
