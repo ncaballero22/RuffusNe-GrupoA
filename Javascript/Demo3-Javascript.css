@@ -1,0 +1,15 @@
+div {
+    height: 200px;
+    width: 200px;
+    background-color: salmon;
+}
+
+#miId {
+    height: 200px;
+    width: 200px;
+    background-color: aquamarine;
+}
+
+.claseNueva {
+    background-color: yellow;
+}
