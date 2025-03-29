@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de creación de tablas desde JavaScript</title>
+    <link rel="stylesheet" href="ejercicio_tablav3.css" type="text/css">
+</head>
+<body>
+    <h1>Tabla de datos</h1>
+    <div id="tabla"></div>
+    <p>
+        <button class="btn btn-visualizar" type="button" onclick="mostrarModal()">Agregar Nueva Fila</button>
+    </p>
+
+    <div id="contenedor-formulario" class="form-contenedor">
+        <div class="form-content">
+            <h2>Agregar Nueva Fila</h2>
+            <form id="formulario">
+                <input type="text" id="id" placeholder="ID" required>
+                <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="text" id="apellido" placeholder="Apellido" required>
+                <input type="email" id="correo" placeholder="Email" required>
+                <input type="tel" id="telefono" placeholder="Telefono" required>
+                <input type="text" id="comentario" placeholder="Comentario" required>
+                <button type="button" onclick="agregarFila()">Agregar fila</button>
+                <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <script src="ejercicio_tablav3.js" type="text/javascript"></script>    
+</body>
+</html>
