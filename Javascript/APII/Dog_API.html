@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs as a Service 🐕</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff9800;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Un perro aleatorio para alegrarte el día 🐶</h2>
+        <img id="dogImage" src="" alt="Imagen de un perro">
+        <button onclick="getDogImage()">Ver otro perro</button>
+    </div>
+
+    <script>
+        function getDogImage() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('dogImage').src = data.message;
+                })
+                .catch(error => console.error('Error al obtener la imagen:', error));
+        }
+
+        // Llamar a la función al cargar la página
+        getDogImage();
+    </script>
+</body>
+</html>

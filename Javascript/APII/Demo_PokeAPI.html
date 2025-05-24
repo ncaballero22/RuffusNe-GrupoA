@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Info</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        img {
+            width: 150px;
+        }
+        select, button {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Selecciona un Pokémon</h2>
+        <select id="pokemonSelect"></select>
+        <button onclick="getPokemon()">Buscar</button>
+        <h3 id="pokeName"></h3>
+        <img id="pokeImage" src="" alt="Imagen del Pokémon">
+        <p><strong>Tipo:</strong> <span id="pokeType">-</span></p>
+        <p><strong>Peso:</strong> <span id="pokeWeight">-</span> kg</p>
+        <p><strong>Altura:</strong> <span id="pokeHeight">-</span> m</p>
+    </div>
+
+    <script>
+        async function loadPokemonList() {
+            const url = 'https://pokeapi.co/api/v2/pokemon?limit=1000';
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const select = document.getElementById('pokemonSelect');
+
+                data.results.forEach(pokemon => {
+                    const option = document.createElement('option');
+                    option.value = pokemon.name;
+                    option.textContent = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error al cargar la lista de Pokémon:', error);
+            }
+        }
+
+        async function getPokemon() {
+            const name = document.getElementById('pokemonSelect').value;
+            const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                document.getElementById('pokeName').textContent = data.name.toUpperCase();
+                document.getElementById('pokeImage').src = data.sprites.front_default;
+                document.getElementById('pokeType').textContent = data.types.map(type => type.type.name).join(', ');
+                document.getElementById('pokeWeight').textContent = data.weight / 10;
+                document.getElementById('pokeHeight').textContent = data.height / 10;
+            } catch (error) {
+                console.error('Error al obtener datos del Pokémon:', error);
+                document.getElementById('pokeName').textContent = "Pokémon no encontrado";
+                document.getElementById('pokeImage').src = "";
+                document.getElementById('pokeType').textContent = "-";
+                document.getElementById('pokeWeight').textContent = "-";
+                document.getElementById('pokeHeight').textContent = "-";
+            }
+        }
+
+        // Cargar la lista de Pokémon al iniciar la página
+        loadPokemonList();
+    </script>
+</body>
+</html>

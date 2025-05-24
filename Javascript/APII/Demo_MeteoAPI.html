@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta el clima</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Consulta el clima</h2>
+        <form id="weatherForm">
+            <label for="lat">Latitud:</label>
+            <input type="text" id="lat" required><br>
+            <label for="lon">Longitud:</label>
+            <input type="text" id="lon" required><br>
+            <button type="submit">Obtener clima</button>
+        </form>
+        <p><strong>Temperatura:</strong> <span id="temperature">-</span></p>
+        <p><strong>Viento:</strong> <span id="wind">-</span></p>
+        <p><strong>Estado del clima:</strong> <span id="weather">-</span></p>
+    </div>
+
+    <script>
+        document.getElementById('weatherForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const lat = document.getElementById('lat').value;
+            const lon = document.getElementById('lon').value;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temperature').textContent = `${data.current_weather.temperature}°C`;
+                    document.getElementById('wind').textContent = `${data.current_weather.windspeed} km/h`;
+                    document.getElementById('weather').textContent = interpretWeatherCode(data.current_weather.weathercode);
+                })
+                .catch(error => console.error('Error al obtener datos:', error));
+        });
+
+        function interpretWeatherCode(code) {
+            const weatherDescriptions = {
+                0: "Despejado",
+                1: "Mayormente despejado",
+                2: "Parcialmente nublado",
+                3: "Nublado",
+                45: "Niebla",
+                48: "Niebla escarcha",
+                51: "Llovizna ligera",
+                53: "Llovizna moderada",
+                55: "Llovizna intensa",
+                61: "Lluvia ligera",
+                63: "Lluvia moderada",
+                65: "Lluvia intensa",
+                80: "Chubascos ligeros",
+                81: "Chubascos moderados",
+                82: "Chubascos intensos"
+            };
+            return weatherDescriptions[code] || "Desconocido";
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hechos de Gatos 🐱</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff9800;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        select {
+            padding: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hecho aleatorio sobre gatos 🐱</h2>
+        <p id="catFact">Presiona el botón para obtener un dato curioso.</p>
+        <button onclick="getCatFact()">Obtener hecho</button>
+        <h3>Traducir a:</h3>
+        <select id="languageSelect">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Portugués</option>
+        </select>
+        <button onclick="translateFact()">Traducir</button>
+        <p id="translatedFact"></p>
+    </div>
+
+    <script>
+        let currentFact = "";
+
+        function getCatFact() {
+            fetch('https://catfact.ninja/fact')
+                .then(response => response.json())
+                .then(data => {
+                    currentFact = data.fact;
+                    document.getElementById('catFact').textContent = currentFact;
+                    document.getElementById('translatedFact').textContent = ""; // Limpiar traducción
+                })
+                .catch(error => console.error('Error al obtener el hecho:', error));
+        }
+
+        function translateFact() {
+            const selectedLang = document.getElementById('languageSelect').value;
+            if (!currentFact) {
+                alert("Primero obtén un hecho sobre gatos.");
+                return;
+            }
+            fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(currentFact)}&langpair=en|${selectedLang}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('translatedFact').textContent = data.responseData.translatedText;
+                })
+                .catch(error => console.error('Error al traducir:', error));
+        }
+    </script>
+</body>
+</html>
