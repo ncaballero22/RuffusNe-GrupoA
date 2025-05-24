@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress_page</title>
+    <style type="text/css">
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            margin: 0;
+            background: white;
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 500px;
+            background: black;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 30px;
+            width: 0;
+            background: greenyellow;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+            transition: width 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">
+            0%
+        </div>
+    </div>
+
+    <script src="Login.js" type="text/javascript"></script>
+</body>
+</html>

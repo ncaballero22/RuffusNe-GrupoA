@@ -1,0 +1,85 @@
+/* Estilos generales */
+body {
+    font-family: 'Times new roman', sans-serif;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: rgb(51, 255, 109);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #0b7a75;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #c8f3f1;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #20b2aa;
+    box-shadow: 0 0 8px rgba(32, 178, 170, 0.3);
+}
+
+/* Estilos para el botón */
+.submit-btn {
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0b7a75;
+}
+
+/* Efectos adicionales */
+input:hover {
+    border-color: #7fffd4;
+}
+
+/* Estilo para el formulario cuando se envía correctamente */
+form.submitted .submit-btn {
+    background-color: #40e0d0;
+}
+
+/* Animación sutil para los inputs */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(127, 255, 212, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(127, 255, 212, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(127, 255, 212, 0); }
+}
+
+input:focus {
+    animation: pulse 1.5s infinite;
+}

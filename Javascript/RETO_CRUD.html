@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="RETO_CRUD" content="width=device-width, initial-scale=1.0">
+    <title>RETO CRUD</title>
+</head>
+<body>
+    <h1>CRUD Vehículos</h1>
+    
+    <form id="vehiculoForm">
+        <input type="text" id="id" placeholder="ID" required><br>
+        <input type="text" id="marca" placeholder="Marca" required><br>
+        <input type="text" id="modelo" placeholder="Modelo" required><br>
+        <input type="text" id="placa" placeholder="Placa" required><br>
+        <input type="text" id="color" placeholder="Color" required><br>
+        <input type="number" id="año" placeholder="Año" required><br><br>
+        
+        <button type="button" onclick="insertarVehiculo()">Insertar</button>
+        <button type="button" onclick="actualizarVehiculo()">Actualizar</button>
+        <button type="button" onclick="consultarVehiculo()">Consultar</button>
+        <button type="button" onclick="eliminarVehiculo()">Eliminar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script src="RETO_CRUD.js"></script>
+</body>
+</html>
+
